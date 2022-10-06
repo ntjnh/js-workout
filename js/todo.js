@@ -30,10 +30,33 @@ function addNewTask(task, cells) {
     return taskRow;
 }
 
+const deleteButtons = document.getElementsByClassName("delete");
+
+for (let i = 0; i < deleteButtons.length; i++) {
+    deleteButtons[i].addEventListener("click", e => {
+        deleteTask(e);
+    });
+}
+
+function deleteTask(e) {
+
+    let button;
+    let clicked = e.target;
+
+    if (clicked.tagName === "I") {
+        button = e.target.parentNode;
+    } else {
+        button = e.target;
+    }
+
+    let cell = button.parentNode;
+    let row = cell.parentNode;
+    row.remove();
+}
+
 addTask.addEventListener("submit", e => {
     e.preventDefault();
 
-    // Save task string
     const task = taskToAdd.value;
 
     // Clear input field
