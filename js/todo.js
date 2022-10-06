@@ -1,6 +1,18 @@
 const addTask = document.getElementById("addTask");
 const taskToAdd = document.getElementById("taskToAdd");
 
+// Create elements for action icons
+function iconCell(iconClass) {
+    const cell = document.createElement("td");
+    const button = document.createElement("button");
+    const icon = document.createElement("i");
+    icon.classList.add("bi", iconClass);
+    button.append(icon);
+    cell.append(button);
+
+    return cell;
+}
+
 addTask.addEventListener("submit", e => {
     e.preventDefault();
 
@@ -19,26 +31,9 @@ addTask.addEventListener("submit", e => {
     const taskCell = document.createElement("td");
     taskCell.textContent = newTask;
     
-    const upCell = document.createElement("td");
-    const upButton = document.createElement("button");
-    const upIcon = document.createElement("i");
-    upIcon.classList.add("bi", "bi-arrow-up");
-    upButton.append(upIcon);
-    upCell.append(upButton);
-
-    const downCell = document.createElement("td");
-    const downButton = document.createElement("button");
-    const downIcon = document.createElement("i");
-    downIcon.classList.add("bi", "bi-arrow-down");
-    downButton.append(downIcon)
-    downCell.append(downButton);
-
-    const deleteCell = document.createElement("td");
-    const deleteButton = document.createElement("button");
-    const deleteIcon = document.createElement("i");
-    deleteIcon.classList.add("bi", "bi-trash");
-    deleteButton.append(deleteIcon)
-    deleteCell.append(deleteButton);
+    const upCell = iconCell("bi-arrow-up");
+    const downCell = iconCell("bi-arrow-down");
+    const deleteCell = iconCell("bi-trash");
 
     taskRow.append(tickCell, taskCell, upCell, downCell, deleteCell);
     taskList.append(taskRow);
