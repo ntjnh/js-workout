@@ -13,30 +13,40 @@ function iconCell(iconClass) {
     return cell;
 }
 
-addTask.addEventListener("submit", e => {
-    e.preventDefault();
-
-    const newTask = taskToAdd.value;
-
-    // Clear input field
-    taskToAdd.value = "";
-
-    // Make elements for new task
-    const taskList = document.getElementById("taskList");
-    const taskRow = document.createElement("tr");
+function addNewTask(task, cells) {
     const tickCell = document.createElement("td");
     const tick = document.createElement("i");
     tick.classList.add("bi", "bi-circle");
     tickCell.append(tick);
     const taskCell = document.createElement("td");
-    taskCell.textContent = newTask;
+    taskCell.textContent = task;
+
+    const taskRow = document.createElement("tr");
+
+    taskRow.append(tickCell, taskCell, ...cells);
+
+    return taskRow;
+}
+
+addTask.addEventListener("submit", e => {
+    e.preventDefault();
+
+    // Save task string
+    const task = taskToAdd.value;
+
+    // Clear input field
+    taskToAdd.value = "";
+
+    const taskList = document.getElementById("taskList");
     
+    // Create table cells with action icons
     const upCell = iconCell("bi-arrow-up");
     const downCell = iconCell("bi-arrow-down");
     const deleteCell = iconCell("bi-trash");
 
-    taskRow.append(tickCell, taskCell, upCell, downCell, deleteCell);
-    taskList.append(taskRow);
+    const row = addNewTask(task, [upCell, downCell, deleteCell]);
+
+    taskList.append(row);
 });
 
 /*
