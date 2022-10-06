@@ -1,3 +1,5 @@
+"use strict";
+
 const addTask = document.getElementById("addTask");
 const taskToAdd = document.getElementById("taskToAdd");
 
