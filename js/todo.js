@@ -56,6 +56,31 @@
         row.remove();
     }
 
+    const completeCell = document.getElementsByClassName("complete");
+
+    for (let i = 0; i < completeCell.length; i++) {
+        completeCell[i].addEventListener("click", e => {
+            completeTask(e);
+        });
+    }
+
+    function completeTask(e) {
+        let button;
+        let clicked = e.target;
+
+        if (clicked.tagName === "I") {
+            button = clicked;
+        } else {
+            button = clicked.firstElementChild;
+        }
+
+        button.classList.toggle("bi-circle");
+        button.classList.toggle("bi-check-circle-fill");
+
+        const td = button.parentNode;
+        td.nextElementSibling.classList.toggle("done");
+    }
+
     addTask.addEventListener("submit", e => {
         e.preventDefault();
 
@@ -77,6 +102,12 @@
     });
 
 })();
+
+// TODO: New tasks can't deleted
+// TODO: Make up buttons work
+// TODO: Make down buttons work
+// TODO: Styles
+
 
 /*
 Icons to use
