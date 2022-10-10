@@ -32,6 +32,8 @@
         return taskRow;
     }
 
+    // TODO: Wrap delete  buttons and function in another function to be called when a new task is added
+
     const deleteButtons = document.getElementsByClassName("delete");
 
     for (let i = 0; i < deleteButtons.length; i++) {
