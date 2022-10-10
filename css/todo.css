@@ -71,12 +71,6 @@ table tr td button:hover {
     cursor: pointer;
 }
 
-/* table tr:hover,
-table tr td:hover {
-    background-color: #ccc;
-
-}
-
 table tr td:nth-child(2) {
     width: 70%;
 }
