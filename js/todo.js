@@ -11,6 +11,7 @@
         const button = document.createElement("button");
         const icon = document.createElement("i");
         icon.classList.add("bi", iconClass);
+        button.classList.add("delete");
         button.append(icon);
         cell.append(button);
 
@@ -32,31 +33,32 @@
         return taskRow;
     }
 
-    // TODO: Wrap delete  buttons and function in another function to be called when a new task is added
+    function enableDelete() {
 
-    const deleteButtons = document.getElementsByClassName("delete");
-
-    for (let i = 0; i < deleteButtons.length; i++) {
-        deleteButtons[i].addEventListener("click", e => {
-            deleteTask(e);
-        });
-    }
-
-    function deleteTask(e) {
-
-        let button;
-        let clicked = e.target;
-
-        if (clicked.tagName === "I") {
-            button = e.target.parentNode;
-        } else {
-            button = e.target;
+        const deleteButtons = document.getElementsByClassName("delete");
+    
+        for (let i = 0; i < deleteButtons.length; i++) {
+            deleteButtons[i].addEventListener("click", e => deleteTask(e));
         }
-
-        let cell = button.parentNode;
-        let row = cell.parentNode;
-        row.remove();
+    
+        function deleteTask(e) {
+    
+            let button;
+            let clicked = e.target;
+    
+            if (clicked.tagName === "I") {
+                button = e.target.parentNode;
+            } else {
+                button = e.target;
+            }
+    
+            let cell = button.parentNode;
+            let row = cell.parentNode;
+            row.remove();
+        }
     }
+
+    enableDelete();
 
     const completeCell = document.getElementsByClassName("complete");
 
@@ -91,7 +93,7 @@
         // Clear input field
         taskToAdd.value = "";
 
-        const taskList = document.getElementById("taskList");
+        const taskList = document.getElementsByTagName("tbody")[0];
         
         // Create table cells with action icons
         const upCell = iconCell("bi-arrow-up");
@@ -101,11 +103,11 @@
         const row = addNewTask(task, [upCell, downCell, deleteCell]);
 
         taskList.append(row);
+        enableDelete();
     });
 
 })();
 
-// TODO: New tasks can't deleted
 // TODO: Make up buttons work
 // TODO: Make down buttons work
 // TODO: Styles
