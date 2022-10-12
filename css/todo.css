@@ -50,13 +50,22 @@ form input {
 form input[type="text"] {
     border: 1px solid #000;
     padding: 8px 10px;
-    width: 85%;
+    width: 80%;
 }
 
-form input[type="submit"] {
+form button[type="submit"] {
     border: 1px solid transparent;
     padding: 8px 12px;
-    width: 12%;
+    width: 17%;
+}
+
+form button[type="submit"]:hover {
+    cursor: pointer;
+}
+
+form button[type="submit"] .bi {
+    display: inline-block;
+    margin-left: 3px;
 }
 
 table {
