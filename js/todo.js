@@ -85,6 +85,29 @@
         td.nextElementSibling.classList.toggle("done");
     }
 
+    function reorder() {
+        const taskRows = document.getElementsByTagName("tr");
+
+        for (let i = 0; i < taskRows.length; i++) {
+            let button = taskRows[i].children[2].children[0];
+
+            button.addEventListener("click", e => {
+                let rows = [...taskRows];
+
+                // Remove the row to move and save it temporarily
+                let toMove = rows.splice(i, 1);
+
+                // NOT WORKING: add the row back in one place in front of its previous place
+                rows.splice(i - 1, 1, toMove);
+
+            });
+        }
+
+        return;
+    }
+
+    reorder();
+
     addTask.addEventListener("submit", e => {
         e.preventDefault();
 
@@ -111,13 +134,4 @@
 // TODO: Make up buttons work
 // TODO: Make down buttons work
 // TODO: Styles
-
-
-/*
-Icons to use
-
-https://icons.getbootstrap.com/icons/circle/
-https://icons.getbootstrap.com/icons/check-circle-fill/
-https://icons.getbootstrap.com/icons/check-circle/
-
-*/
+// TODO: Task must not be added if blank
