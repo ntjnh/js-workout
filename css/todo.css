@@ -98,6 +98,10 @@ table tr td:nth-child(2) {
     padding-right: 12px;
 }
 
+.complete:hover {
+    cursor: pointer;
+}
+
 .done {
     color: grey;
     text-decoration: line-through;
