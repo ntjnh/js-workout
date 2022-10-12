@@ -89,6 +89,10 @@ table tr td button:hover {
     cursor: pointer;
 }
 
+table tr td button[disabled]:hover {
+    cursor: not-allowed;
+}
+
 table tr td:nth-child(2) {
     width: 70%;
 }
