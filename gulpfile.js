@@ -3,9 +3,7 @@ const babel = require("gulp-babel");
 
 function defaultTask() {
     return src("src/js/app.js")
-        .pipe(babel({
-            presets: ["@babel/preset-env"]
-        }))
+        .pipe(babel())
         .pipe(dest("dist/js"));
 }
 
