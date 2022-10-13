@@ -18,6 +18,7 @@
   "homepage": "https://github.com/ntjnh/side-projects#readme",
   "devDependencies": {
     "@babel/core": "^7.19.3",
+    "@babel/preset-env": "^7.19.4",
     "gulp": "^4.0.2",
     "gulp-babel": "^8.0.0"
   }
