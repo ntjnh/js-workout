@@ -1,0 +1,24 @@
+{
+  "name": "side-projects",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ntjnh/side-projects.git"
+  },
+  "author": "Nate",
+  "license": "UNLICENSED",
+  "bugs": {
+    "url": "https://github.com/ntjnh/side-projects/issues"
+  },
+  "homepage": "https://github.com/ntjnh/side-projects#readme",
+  "devDependencies": {
+    "@babel/core": "^7.19.3",
+    "gulp": "^4.0.2",
+    "gulp-babel": "^8.0.0"
+  }
+}
