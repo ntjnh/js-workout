@@ -113,20 +113,24 @@
 
         const task = taskToAdd.value;
 
-        // Clear input field
-        taskToAdd.value = "";
-
-        const taskList = document.getElementsByTagName("tbody")[0];
-        
-        // Create table cells with action icons
-        const upCell = iconCell("bi-arrow-up");
-        const downCell = iconCell("bi-arrow-down");
-        const deleteCell = iconCell("bi-trash");
-
-        const row = addNewTask(task, [upCell, downCell, deleteCell]);
-
-        taskList.append(row);
-        enableDelete();
+        if (!task) {
+            taskToAdd.style.borderColor = "red"; // Needs to reset when field is filled - toggle a class!!
+        } else {
+            // Clear input field
+            taskToAdd.value = "";
+    
+            const taskList = document.getElementsByTagName("tbody")[0];
+            
+            // Create table cells with action icons
+            const upCell = iconCell("bi-arrow-up");
+            const downCell = iconCell("bi-arrow-down");
+            const deleteCell = iconCell("bi-trash");
+    
+            const row = addNewTask(task, [upCell, downCell, deleteCell]);
+    
+            taskList.append(row);
+            enableDelete();
+        }
     });
 
 })();
