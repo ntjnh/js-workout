@@ -1,0 +1,10 @@
+.heading {
+
+    &__text {
+        font-size: 3.25rem;
+        font-weight: $bold;
+        margin: 0 auto 2rem;
+        max-width: 632px;
+        text-align: center;
+    }
+}

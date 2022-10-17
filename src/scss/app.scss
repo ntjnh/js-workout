@@ -29,6 +29,12 @@ $black: #222;
 @import "../../node_modules/bootstrap/scss/utilities/api";
 
 // 8. Add additional custom code here
+@import "global/variables";
+@import "global/header";
+@import "global/footer";
+
+@import "sections/heading";
+@import "sections/projects-list";
 
 body {
     font-family: 'bely', 'Merriweather', serif;
