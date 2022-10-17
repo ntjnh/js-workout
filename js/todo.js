@@ -114,8 +114,11 @@
         const task = taskToAdd.value;
 
         if (!task) {
-            taskToAdd.style.borderColor = "red"; // Needs to reset when field is filled - toggle a class!!
+
+            taskToAdd.style.borderColor = "#cf2727";
+
         } else {
+
             // Clear input field
             taskToAdd.value = "";
     
@@ -130,6 +133,9 @@
     
             taskList.append(row);
             enableDelete();
+
+            // Reset border colour
+            taskToAdd.style.borderColor = "#000000";
         }
     });
 
@@ -138,4 +144,4 @@
 // TODO: Make up buttons work
 // TODO: Make down buttons work
 // TODO: Styles
-// TODO: Task must not be added if blank
+// TODO: Add error message to go with red border
