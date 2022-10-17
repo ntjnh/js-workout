@@ -1,6 +1,6 @@
 "use strict";
 
-const { dest, parallel, series, src } = require("gulp");
+const { dest, parallel, series, src, watch } = require("gulp");
 const babel = require("gulp-babel");
 const sass = require("gulp-sass")(require("sass"));
 const sourcemaps = require("gulp-sourcemaps");
@@ -21,8 +21,17 @@ function scss() {
         .pipe(dest("dist/css"));
 }
 
+function watchJS() {
+    watch("./src/js/**/*.js", js);
+}
+
+function watchSCSS() {
+    watch("./src/scss/**/*.scss", scss);
+}
+
 module.exports = {
     default: series(scss, js),
     sass: scss,
-    js: js
+    js: js,
+    watch: parallel(watchSCSS, watchJS)
 };
