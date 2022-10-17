@@ -89,16 +89,22 @@
         const taskRows = document.getElementsByTagName("tr");
 
         for (let i = 0; i < taskRows.length; i++) {
-            let button = taskRows[i].children[2].children[0];
+            let upButton = taskRows[i].children[2].children[0];
 
-            button.addEventListener("click", e => {
-                let rows = [...taskRows];
+            upButton.addEventListener("click", e => {
+                const row = upButton.parentElement.parentElement;
 
+                // get previous task
+
+                // in row, insert task before previous task
+
+
+                console.log()
                 // Remove the row to move and save it temporarily
-                let toMove = rows.splice(i, 1);
+                // let toMove = rows.splice(i, 1);
 
                 // NOT WORKING: add the row back in one place in front of its previous place
-                rows.splice(i - 1, 1, toMove);
+                // rows.splice(i - 1, 1, toMove);
 
             });
         }
@@ -147,4 +153,3 @@
 // TODO: Make up buttons work
 // TODO: Make down buttons work
 // TODO: Styles
-// TODO: Add error message to go with red border
