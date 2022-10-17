@@ -55,6 +55,8 @@
             let cell = button.parentNode;
             let row = cell.parentNode;
             row.remove();
+
+            disableButtons();
         }
     }
 
@@ -70,7 +72,7 @@
 
     function completeTask(e) {
         let button;
-        let clicked = e.target;
+        const clicked = e.target;
 
         if (clicked.tagName === "I") {
             button = clicked;
@@ -85,14 +87,24 @@
         td.nextElementSibling.classList.toggle("done");
     }
 
+    function disableButtons() {
+        const tasks = document.getElementsByTagName("tr");
+        const firstUpButton = tasks[0].children[2].children[0];
+        const lastDownButton = tasks[tasks.length - 1].children[3].children[0];
+
+        const allButtons = document.querySelectorAll(".move-up, .move-down");
+        for (let i = 0; i < allButtons.length; i++) {
+            let button = allButtons[i];
+            button.removeAttribute("disabled");
+        }
+        
+        firstUpButton.setAttribute("disabled", "");
+        lastDownButton.setAttribute("disabled", "");
+    }
+
     function reorder() {
         const taskRows = document.getElementsByTagName("tr");
-
-        function enableButtons(buttons) {
-            for (let i = 0; i < buttons.length; i++) {
-                buttons[i].removeAttribute("disabled");
-            }
-        }
+        disableButtons();
 
         for (let i = 0; i < taskRows.length; i++) {
             const upButton = taskRows[i].children[2].children[0];
@@ -100,42 +112,28 @@
 
             upButton.addEventListener("click", () => {
                 const task = upButton.parentElement.parentElement;
-
                 const previousTask = task.previousElementSibling;
-
                 const parent = document.getElementsByTagName("tbody")[0];
 
                 if (previousTask) {
                     parent.insertBefore(task, previousTask);
                 }
 
-                enableButtons(taskRows[i].children[2].children);
-
-                if (task === parent.children[0]) {
-                    upButton.setAttribute("disabled", "");
-                }
+                disableButtons();
             });
 
             downButton.addEventListener("click", () => {
                 const task = downButton.parentElement.parentElement;
-
                 const nextTask = task.nextElementSibling;
                 const nextNextTask = nextTask.nextElementSibling;
-
                 const parent = document.getElementsByTagName("tbody")[0];
 
                 if (nextTask) {
                     parent.insertBefore(task, nextNextTask);
                 }
 
-                enableButtons(taskRows[i].children[2].children);
-
-                if (task === parent.children[parent.children.length - 1]) {
-                    downButton.setAttribute("disabled", "");
-                }
+                disableButtons();
             });
-
-            
         }
     }
 
@@ -177,6 +175,4 @@
 
 })();
 
-// TODO: Disable up button when previous first task becomes second task
-// TODO: Make down buttons work
 // TODO: Styles
