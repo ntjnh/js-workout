@@ -37,7 +37,7 @@ form {
     display: flex;
     flex-wrap: nowrap;
     justify-content: space-between;
-    margin: 0 auto 2rem;
+    margin: 0 auto 1.25rem;
     max-width: 480px;
     text-align: center;
 }
@@ -68,9 +68,18 @@ form button[type="submit"] .bi {
     margin-left: 3px;
 }
 
+.error,
 table {
     margin: 0 auto;
     width: 480px;
+}
+
+.error {
+    background-color: #f6d1d1;
+    color: #cf2727;
+    display: none;
+    margin-bottom: 1.25rem;
+    padding: .5rem .75rem;
 }
 
 table tr td {

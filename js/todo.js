@@ -113,8 +113,10 @@
 
         const task = taskToAdd.value;
 
-        if (!task) {
+        const errorMessage = document.getElementsByClassName("error")[0];
 
+        if (!task) {
+            errorMessage.style.display = "block";
             taskToAdd.style.borderColor = "#cf2727";
 
         } else {
@@ -134,8 +136,9 @@
             taskList.append(row);
             enableDelete();
 
-            // Reset border colour
+            // Reset error styles
             taskToAdd.style.borderColor = "#000000";
+            errorMessage.style.display = "none";
         }
     });
 
