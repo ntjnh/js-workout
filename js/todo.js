@@ -96,6 +96,7 @@
 
         for (let i = 0; i < taskRows.length; i++) {
             const upButton = taskRows[i].children[2].children[0];
+            const downButton = taskRows[i].children[3].children[0];
 
             upButton.addEventListener("click", () => {
                 const task = upButton.parentElement.parentElement;
@@ -113,7 +114,25 @@
                 if (task === parent.children[0]) {
                     upButton.setAttribute("disabled", "");
                 }
+            });
 
+            downButton.addEventListener("click", () => {
+                const task = downButton.parentElement.parentElement;
+
+                const nextTask = task.nextElementSibling;
+                const nextNextTask = nextTask.nextElementSibling;
+
+                const parent = document.getElementsByTagName("tbody")[0];
+
+                if (nextTask) {
+                    parent.insertBefore(task, nextNextTask);
+                }
+
+                enableButtons(taskRows[i].children[2].children);
+
+                if (task === parent.children[parent.children.length - 1]) {
+                    downButton.setAttribute("disabled", "");
+                }
             });
 
             
