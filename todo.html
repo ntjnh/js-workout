@@ -15,7 +15,17 @@
     <link rel="stylesheet" href="css/todo.css">
 </head>
 <body>
-    <main>
+    <header class="header">
+        <h2 class="header__title"><a href="/">Side Projects</a></h2>
+
+        <ul class="nav">
+            <li class="nav-item">
+                <a class="nav-link text-black" href="https://natejonah.com" target="_blank">natejonah.com</a>
+            </li>
+        </ul>
+    </header>
+
+    <main class="todo">
         <section>
             <span class="todo-icon">
                 <i class="bi bi-card-checklist"></i>
@@ -99,6 +109,16 @@
             </table>
         </section>
     </main>
+
+    <footer class="footer">
+        <p class="footer__copyright">&copy; Nate 2022.</p>
+
+        <p class="footer__social">
+            <a href="https://github.com/ntjnh" target="_blank">
+                <i class="bi-github" role="img" aria-label="GitHub"></i>
+            </a>
+        </p>
+    </footer>
 
     <script src="js/todo.js"></script>
 </body>
