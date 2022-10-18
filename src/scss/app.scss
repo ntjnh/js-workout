@@ -36,6 +36,8 @@ $black: #222;
 @import "sections/heading";
 @import "sections/projects-list";
 
+@import "projects/todo";
+
 body {
     font-family: 'bely', 'Merriweather', serif;
     font-size: 1.125rem;
