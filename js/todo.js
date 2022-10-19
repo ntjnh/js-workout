@@ -175,4 +175,4 @@
 
 })();
 
-// TODO: Styles
+// TODO: All buttons on new tasks delete (and are red)?????
