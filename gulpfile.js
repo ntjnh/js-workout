@@ -8,13 +8,13 @@ const cleanCSS = require('gulp-clean-css');
 const browserSync = require('browser-sync').create();
 
 function js() {
-    return src("src/js/app.js")
+    return src("./src/js/*.js")
         .pipe(babel())
         .pipe(dest("dist/js"));
 }
 
 function scss() {
-    return src("src/scss/app.scss")
+    return src(["src/scss/app.scss", "./src/scss/projects/*.scss"])
         .pipe(sourcemaps.init())
         .pipe(sass().on("error", sass.logError))
         .pipe(sourcemaps.write())
@@ -30,7 +30,7 @@ function bSync() {
         }
     });
 
-    watch("./src/js/**/*.js", js);
+    watch("./src/js/*.js", js);
     watch("./src/scss/**/*.scss", scss);
     watch("./*.html").on('change', browserSync.reload);
 };
