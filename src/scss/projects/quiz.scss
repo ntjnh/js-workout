@@ -1,65 +1,60 @@
+@import "../global/variables";
+
 .main {
     letter-spacing: 0.5px;
     font-weight: 300;
-    background-color: steelblue;
-    color: #fff;
+    background-color: $steel-blue;
+    color: $white;
     padding-top: 20px;
     padding-bottom: 20px;
-  }
-  
-  .jumbotron {
-    text-align: center;
-    background-color: #005397;
-  }
-  
-  .jumbotron h2 {
-    font-weight: 300;
-    font-size: 26px;
-    margin-bottom: 50px;
-  }
-  
-  .jumbotron p {
-    font-size: 18px;
-  }
-  
-  
-  #finish {
+
+    h2 {
+        font-weight: $light;
+        font-size: 26px;
+        margin-bottom: 50px;
+    }
+        
+    p {
+        font-size: 18px;
+    }
+}
+
+#finish {
     display: none;
     text-align: center;
-  }
+}
   
-  /* Results */
-  #results {
+/* Results */
+#results {
     display: none;
-  }
+}
   
-  #results h2 {
+#results h2 {
     margin-bottom: 0;
-  }
+}
   
-  #emotion {
+#emotion {
     font-size: 96px;
     margin-bottom: 0;
-  }
+}
   
-  #replay {
+#replay {
     margin-top: 20px;
-  }
+}
    
   
-  /* Customize container */
-  @media (min-width: 768px) {
+/* Customize container */
+@media (min-width: 768px) {
     .container {
-      max-width: 730px;
+        max-width: 730px;
     }
-  }
+}
   
-  
-  /* Responsive: Portrait tablets and up */
-  @media screen and (min-width: 768px) {
+/* Responsive: Portrait tablets and up */
+@media screen and (min-width: 768px) {
     /* Remove the bottom border on the jumbotron for visual effect */
     .jumbotron {
-      border-bottom: 0;
+        border-bottom: 0;
     }
-  }
+}
   
