@@ -1,13 +1,4 @@
-$black: #000;
-$blue: cornflowerblue;
-$grey: grey;
-$grey-light: lightgrey;
-$light-slate-grey: lightslategrey;
-$pink: #f6d1d1;
-$red: #cf2727;
-$red-light: indianred;
-$white: #fff;
-$yellow: #ffe66b;
+@import "../global/variables";
 
 .todo {
     align-items: center;
