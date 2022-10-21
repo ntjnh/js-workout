@@ -1,5 +1,3 @@
-"use strict";
-
 (function() {
 
     const addTask = document.getElementById("addTask");
