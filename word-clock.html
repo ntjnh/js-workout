@@ -4,10 +4,58 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
     <title>Word Clock</title>
+
+    <!-- Google Font Preconnects -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link rel="stylesheet" href="dist/css/app.css">
+    <link rel="stylesheet" href="dist/css/word-clock.css">
 </head>
 <body>
-    <h1>Word Clock</h1>
-    <div id="app"></div>
+    <header class="header">
+        <h2 class="header__title"><a href="/">Side Projects</a></h2>
+
+        <ul class="nav">
+            <li class="nav-item">
+                <a class="nav-link text-black" href="https://natejonah.com" target="_blank">natejonah.com</a>
+            </li>
+        </ul>
+    </header>
+    
+    <main class="word-clock">
+        <h1 class="title">Word Clock</h1>
+
+        <p class="smallprint"><em><small>To the nearest 15 minutes...</small></em></p>
+
+        <p id="digital-clock"></p>
+
+        <div class="clock-text">
+            <span class="on">IT</span>T<span class="on">IS</span>I<span id="twenty">TWENTY</span>
+            <span id="quarter">QUARTER</span><span id="half">HALF</span>M
+            <span id="ten">TEN</span><span id="five">FIVE</span>E<span id="past">PAST</span>
+            <span id="to">TO</span>A<span id="twelve">TWELVE</span><span id="one">ONE</span>
+            <span id="two">TWO</span><span id="three">THREE</span><span id="four">FOUR</span>
+            <span id="five">FIVE</span><span id="six">SIX</span><span id="seven">SEVEN</span>
+            <span id="eight">EIGHT</span><span id="nine">NINE</span><span id="ten-b">TEN</span>
+            <span id="eleven">ELEVEN</span>NDDATE
+            TI<span id="oclock">O'CLOCK</span>MEA
+        </div>
+
+    </main>
+
+    <footer class="footer">
+        <p class="footer__copyright">&copy; Nate 2022.</p>
+
+        <p class="footer__social">
+            <a href="https://github.com/ntjnh" target="_blank">
+                <i class="bi-github" role="img" aria-label="GitHub"></i>
+            </a>
+        </p>
+    </footer>
+
+    <script src="dist/js/word-clock.js"></script>
 </body>
 </html>
