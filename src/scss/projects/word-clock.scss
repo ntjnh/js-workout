@@ -1,0 +1,32 @@
+@import "../global/variables";
+
+.word-clock {
+    text-align: center;
+
+    .title {
+        margin-bottom: 0;
+    }
+    
+    .smallprint {
+        margin: .25rem 0 1.25rem;
+    }
+    
+    #digital-clock,
+    .clock-text {
+        font-family: $mono-font;
+    }
+    
+    .clock-text {
+        color: $black;
+        font-size: 2.75rem;
+        letter-spacing: 20px;
+        line-height: 3.25rem;
+        margin: 0 auto;
+        max-width: 570px;
+        text-transform: lowercase;
+    }
+    
+    .on {
+        color: $red;
+    }
+}
