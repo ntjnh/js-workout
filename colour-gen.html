@@ -10,25 +10,46 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@300;400;600&display=swap" rel="stylesheet">
 
-    <link rel="stylesheet" href="css/colour-gen.css">
+    <link rel="stylesheet" href="dist/css/app.css">
+    <link rel="stylesheet" href="dist/css/colour-gen.css">
 </head>
 <body>
-    <main>
+    <header class="header">
+        <h2 class="header__title"><a href="/">Side Projects</a></h2>
+
+        <ul class="nav">
+            <li class="nav-item">
+                <a class="nav-link text-black" href="https://natejonah.com" target="_blank">natejonah.com</a>
+            </li>
+        </ul>
+    </header>
+
+    <main class="colour-gen">
         
-        <section>
+        <section class="content-box">
             <h1>Colour Generator</h1>
             <p>Click the button below to generate a colour!</p>
 
             <button id="generate">Click Me</button>
 
-            <p id="colourMessage">The default colour is:</p>
+            <h6 id="colourMessage">The default colour is:</h6>
             <pre id="hex">#0052bd</pre>
             <br />
             <pre id="rgb">rgb(0, 82, 189)</pre>
         </section>
 
     </main>
+
+    <footer class="footer">
+        <p class="footer__copyright">&copy; Nate 2022.</p>
+
+        <p class="footer__social">
+            <a href="https://github.com/ntjnh" target="_blank">
+                <i class="bi-github" role="img" aria-label="GitHub"></i>
+            </a>
+        </p>
+    </footer>
     
-    <script src="js/colour-gen.js"></script>
+    <script src="dist/js/colour-gen.js"></script>
 </body>
 </html>
