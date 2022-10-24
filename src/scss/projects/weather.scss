@@ -1,0 +1,52 @@
+@import "../global/variables";
+
+.weather {
+    background-color: $aqua;
+    color: $black;
+    padding: 3rem 0;
+
+    section {
+        text-align: center;
+    }
+    
+    .page-header {
+        border-bottom: 1px solid $black;
+        padding-bottom: 2rem;
+    
+        h1 {
+            margin: 0;
+            text-transform: uppercase;
+        }
+    }
+    
+    h1,
+    h2 {
+        letter-spacing: 1px;
+    }
+    
+    h2 {
+        font-weight: $light;
+        margin-top: 3.125rem;
+        text-transform: uppercase;
+    }
+    
+    &-icon {
+        font-size: 4.5rem;
+    }
+
+    .temp-buttons {
+        margin: 0;
+        
+        button {
+            background-color: transparent;
+            border: 1px solid $black;
+            color: $black;
+            margin-top: .25rem;
+        }
+    }
+    
+    .error {
+        color: $red;
+    }
+}
+
