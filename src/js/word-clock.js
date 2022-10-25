@@ -21,7 +21,7 @@
     const digitalClock = document.getElementById("digital-clock");
     digitalClock.textContent = h + ":" + m + ":" + s;
 
-    const t = setTimeout(startTime, 500);
+    setTimeout(startTime, 500);
 
     // hours past switch statement as a function
     function hoursPast() {
