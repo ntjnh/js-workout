@@ -33,7 +33,7 @@ function bSync() {
     watch("./src/js/*.js", js);
     watch("./src/scss/**/*.scss", scss);
     watch("./*.html").on('change', browserSync.reload);
-};
+}
 
 function watchJS() {
     watch("./src/js/**/*.js", js);
