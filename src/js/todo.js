@@ -9,7 +9,18 @@
         const button = document.createElement("button");
         const icon = document.createElement("i");
         icon.classList.add("bi", iconClass);
-        button.classList.add("delete");
+        
+        if (iconClass == "bi-arrow-up") {
+            button.classList.add("move-up");
+            button.setAttribute("aria-label", "Move Up");
+        } else if (iconClass == "bi-arrow-down") {
+            button.classList.add("move-down");
+            button.setAttribute("aria-label", "Move Down");
+        } else {
+            button.classList.add("delete");
+            button.setAttribute("aria-label", "Delete");
+        }
+
         button.append(icon);
         cell.append(button);
 
