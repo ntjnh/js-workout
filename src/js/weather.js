@@ -15,17 +15,17 @@
     if (navigator.geolocation) {
 
         // When location is successfully retrieved
-        function success(position) {
+        const success = position => {
 
             const lat = position.coords.latitude;
             const lng = position.coords.longitude;
 
             getWeather(lat, lng);
 
-        }
+        };
 
         // When location access is denied
-        function error() {
+        const error = () => {
 
             const subErrorMessage = document.createElement("h4");
             errorMessage.textContent = "Unable to retrieve weather conditions.";
@@ -41,7 +41,7 @@
                 element.classList.add("d-none");
             });
 
-        }
+        };
 
         navigator.geolocation.getCurrentPosition(success, error);
 
