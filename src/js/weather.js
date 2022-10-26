@@ -11,6 +11,8 @@
     celsiusButton = document.querySelector(".c-button"),
     errorMessage = document.createElement("h3");
 
+
+    /*
     // ===== Current location: ====== //
     if (navigator.geolocation) {
 
@@ -54,6 +56,10 @@
 
     }
 
+    */
+
+    getWeather(53.800268, -1.549721);
+
     // convert temp to fahrenheit
     function getFahrenheit(celsius) {
         return Math.round(celsius * 9 / 5 + 32);
@@ -67,7 +73,8 @@
 
     // ===== Get current weather: ====== //
     function getWeather(latitude, longitude) {
-        const weatherData = "//fcc-weather-api.glitch.me/api/current?lon=" + longitude + "&lat=" + latitude;
+        // const weatherData = "//fcc-weather-api.glitch.me/api/current?lon=" + longitude + "&lat=" + latitude;
+        const weatherData = "https://api.openweathermap.org/data/2.5/weather?lat=" + latitude + "&lon=" + longitude + "&appid=" + appKey;
         const weather = new XMLHttpRequest();
 
         weather.onreadystatechange = function() {
@@ -77,18 +84,20 @@
                     const weatherInfo = JSON.parse(weather.responseText);
                     const temp = document.querySelector(".temp");
 
+                    // convert kelvin temp to celsius
+                    const celsius = Math.round(weatherInfo.main.temp - 273.15);
+
                     // Add weather info to the DOM
-                    location.textContent = weatherInfo.name;
-                    temp.textContent = Math.round(weatherInfo.main.temp);
+                    location.textContent = `${weatherInfo.name}, ${weatherInfo.sys.country}`;
+                    temp.textContent = `${celsius} °C`;
                     conditions.textContent = weatherInfo.weather[0].main;
                     getIcon(weatherInfo.weather[0].id);
 
                     // Convert temperature to fahrenheit
                     const fTemp = document.querySelector(".f-temp");
-                    fTemp.textContent = getFahrenheit(weatherInfo.main.temp);
+                    fTemp.textContent = `${getFahrenheit(celsius)} °F`;
 
-                    // Display these when the data comes through from the server
-                    document.querySelector(".unit").innerHTML = "&deg;C";
+                    // Show unit conversion button
                     fahrenheitButton.classList.remove("d-none");
                 } else {
                     alert(weather.status);
