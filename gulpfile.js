@@ -27,7 +27,8 @@ function bSync() {
     browserSync.init({
         server: {
             baseDir: "./"
-        }
+        },
+        https: true
     });
 
     watch("./src/js/*.js", js);
