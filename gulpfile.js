@@ -31,7 +31,7 @@ function bSync() {
         https: true
     });
 
-    watch("./src/js/*.js", js);
+    watch("./src/js/*.js").on('change', series(js, browserSync.reload));
     watch("./src/scss/**/*.scss", scss);
     watch("./*.html").on('change', browserSync.reload);
 }
