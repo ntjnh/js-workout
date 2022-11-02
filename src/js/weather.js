@@ -1,3 +1,5 @@
+import appKey from "./weather-key";
+
 (function() {
     const container = document.getElementById("container"),
     location = document.getElementById("location"),
