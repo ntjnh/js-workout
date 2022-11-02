@@ -1,8 +1,8 @@
 (function() {
+    const appKey = "3b0b82dad640d7f7b8d5819b180c42b9";
 
     const container = document.getElementById("container"),
     location = document.getElementById("location"),
-    icon = document.querySelector(".weather-icon"),
     conditions = document.querySelector(".conditions"),
     celsius = document.getElementById("cel"),
     fahrenheit = document.getElementById("fah"),
@@ -11,102 +11,108 @@
     celsiusButton = document.querySelector(".c-button"),
     errorMessage = document.createElement("h3");
 
+    // Get weather based on geo location
+    function useGeoLocation() {
+        if (navigator.geolocation) {
 
-    /*
-    // ===== Current location: ====== //
-    if (navigator.geolocation) {
-
-        // When location is successfully retrieved
-        const success = position => {
-
-            const lat = position.coords.latitude;
-            const lng = position.coords.longitude;
-
-            getWeather(lat, lng);
-
-        };
-
-        // When location access is denied
-        const error = () => {
-
+            // When location is successfully retrieved
+            const success = position => {
+    
+                const lat = position.coords.latitude;
+                const lng = position.coords.longitude;
+    
+                getWeather(lat, lng);
+    
+            };
+    
+            navigator.geolocation.getCurrentPosition(success);
+    
+        } else if (!navigator.geolocation) {
+    
+            // If user's browser doesn't support geolocation
             const subErrorMessage = document.createElement("h4");
-            errorMessage.textContent = "Unable to retrieve weather conditions.";
+    
+            errorMessage.textContent = "Geolocation is not supported by your browser.";
             subErrorMessage.textContent = "Please allow location access.";
-            container.appendChild(errorMessage);
+    
             container.appendChild(subErrorMessage);
+            container.appendChild(errorMessage);
+            
             subErrorMessage.classList.add("error");
-
-            // Hide the elements that hold weather info
-            const weatherElements = [location, icon, conditions, celsius, fahrenheit, tempButtons];
-
-            weatherElements.forEach(element => {
-                element.classList.add("d-none");
-            });
-
-        };
-
-        navigator.geolocation.getCurrentPosition(success, error);
-
-    } else if (!navigator.geolocation) {
-
-        // If user's browser doesn't support geolocation
-
-        errorMessage.textContent = "Geolocation is not supported by your browser.";
-        container.appendChild(errorMessage);
-
+        }
     }
 
-    */
+    const geoButton = document.querySelector(".geo-button");
+    geoButton.addEventListener("click", useGeoLocation());
 
-    getWeather(53.800268, -1.549721);
+    const searchForm = document.getElementById("location-search");
+    searchForm.addEventListener("submit", e => {
+        e.preventDefault();
+
+        const searchTerm = e.target[0].value;
+
+        search(searchTerm);
+    });
+
+    function search(place) {
+        const locationData = `https://api.openweathermap.org/geo/1.0/direct?q=${place}&limit=5&appid=${appKey}`;
+
+        fetch(locationData)
+            .then(response => {
+                return response.json();
+            })
+            .then(data => {
+                const lat = data[0].lat;
+                const lon = data[0].lon;
+
+                console.log();
+                console.log(`${data[0].name}, ${data[0].state}, ${data[0].country}`);
+
+                getWeather(lat, lon);
+            })
+            .catch(error => console.error('there was an error', error));
+    }
 
     // convert temp to fahrenheit
     function getFahrenheit(celsius) {
         return Math.round(celsius * 9 / 5 + 32);
     }
 
-    // ===== Get weather icon and add it to the DOM ===== //
+    // Get weather icon and add to DOM
     function getIcon(id) {
-        const iconClass = "wi-owm-" + id;
-        document.getElementsByTagName("i")[0].classList.add(iconClass);
+        const iconClass = `wi-owm-${id}`;
+        document.querySelector(".weather-icon i").classList.add(iconClass);
     }
 
-    // ===== Get current weather: ====== //
+    // Get current weather with coordinates
     function getWeather(latitude, longitude) {
-        // const weatherData = "//fcc-weather-api.glitch.me/api/current?lon=" + longitude + "&lat=" + latitude;
         const weatherData = "https://api.openweathermap.org/data/2.5/weather?lat=" + latitude + "&lon=" + longitude + "&appid=" + appKey;
-        const weather = new XMLHttpRequest();
 
-        weather.onreadystatechange = function() {
-            if (weather.readyState === 4) {
-                if (weather.status === 200) {
-                    // turn weather data from API into an object
-                    const weatherInfo = JSON.parse(weather.responseText);
-                    const temp = document.querySelector(".temp");
+        fetch(weatherData)
+            .then(response => response.json())
+            .then(data => {
 
-                    // convert kelvin temp to celsius
-                    const celsius = Math.round(weatherInfo.main.temp - 273.15);
+                const weatherInfo = data;
+                const temp = document.querySelector(".temp");
 
-                    // Add weather info to the DOM
-                    location.textContent = `${weatherInfo.name}, ${weatherInfo.sys.country}`;
-                    temp.textContent = `${celsius} °C`;
-                    conditions.textContent = weatherInfo.weather[0].main;
-                    getIcon(weatherInfo.weather[0].id);
+                // convert kelvin temp to celsius
+                const celsius = Math.round(weatherInfo.main.temp - 273.15);
 
-                    // Convert temperature to fahrenheit
-                    const fTemp = document.querySelector(".f-temp");
-                    fTemp.textContent = `${getFahrenheit(celsius)} °F`;
+                // Add weather info to the DOM
+                location.textContent = `${weatherInfo.name}, ${weatherInfo.sys.country}`;
+                temp.textContent = `${celsius} °C`;
+                conditions.textContent = weatherInfo.weather[0].main;
+                getIcon(weatherInfo.weather[0].id);
 
-                    // Show unit conversion button
-                    fahrenheitButton.classList.remove("d-none");
-                } else {
-                    alert(weather.status);
-                }
-            }
-        };
+                // Convert temperature to fahrenheit
+                const fTemp = document.querySelector(".f-temp");
+                fTemp.textContent = `${getFahrenheit(celsius)} °F`;
 
-        weather.open("GET", weatherData);
-        weather.send();
+                // Show unit conversion button
+                fahrenheitButton.classList.remove("d-none");
+
+            })
+            .catch(error => console.error('there was an error', error));
     }
 
     // Celsius & fahrenheit toggle
