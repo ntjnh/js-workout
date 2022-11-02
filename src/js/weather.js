@@ -1,6 +1,4 @@
 (function() {
-    const appKey = "3b0b82dad640d7f7b8d5819b180c42b9";
-
     const container = document.getElementById("container"),
     location = document.getElementById("location"),
     conditions = document.querySelector(".conditions"),
