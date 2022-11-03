@@ -4,4 +4,3 @@ node_modules/
 build/
 dist/
 favicon.png
-src/js/weather-key.js
