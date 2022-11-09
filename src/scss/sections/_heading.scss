@@ -1,10 +1,14 @@
 .heading {
+    border-bottom: 1px solid $black;
+    margin: 0 auto 2.5rem;
+    max-width: 632px;
+    padding-bottom: 2.5rem;
 
     &__text {
         font-size: 3.25rem;
         font-weight: $bold;
-        margin: 0 auto 2rem;
-        max-width: 632px;
+        margin: 0 auto;
+        max-width: 100%;
         text-align: center;
     }
 }
