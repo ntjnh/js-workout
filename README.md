@@ -1,4 +1,4 @@
-# Side Projects
+# JS Workout
 
 A collection of small projects I have made to help me improve my JavaScript skills. Some of them will be built with Vanilla JS and others (eventually) will be built in React.
 
